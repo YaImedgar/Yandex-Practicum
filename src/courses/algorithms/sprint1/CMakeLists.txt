@@ -2,27 +2,19 @@ cmake_minimum_required(VERSION 3.24)
 
 project(sprint1 CXX)
 
-file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
-
-message(STATUS "Sprint1 sources=${SOURCES}")
+file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/**/*.cpp)
 
 file(GLOB_RECURSE UNIT_TEST_SOURCES
-        ${CMAKE_CURRENT_SOURCE_DIR}/test/quadratic_equation_test.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/test/three_of_even_or_odd_test.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/test/point_neighbors_test.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/**/*test.cpp
         )
+
+list(REMOVE_ITEM SOURCES ${UNIT_TEST_SOURCES})
+
+message(STATUS "Sprint1 sources=${SOURCES}")
 
 message(STATUS "Sprint1 tests=${UNIT_TEST_SOURCES}")
 
 add_library(${PROJECT_NAME} STATIC ${SOURCES})
-
-target_include_directories(
-        ${PROJECT_NAME}
-        PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
-        PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
-)
 
 set(SPRINT1_UNITTEST ${PROJECT_NAME}_unittest)
 
@@ -42,6 +34,4 @@ target_link_libraries(
 )
 
 add_google_tests(${SPRINT1_UNITTEST})
-
-
 

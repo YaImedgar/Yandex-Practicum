@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <point_neighbors.hpp>
+#include "point_neighbors.hpp"
 
 namespace sprint1 {
 
@@ -31,7 +31,7 @@ const Map DefaultMap = {
     {2, 7, 0},
 };
 
-std::vector<NeighborsTest> NormalTestValues{
+std::vector<NeighborsTest> NormalNeighborsTestValues{
     NeighborsTest{
         .map = DefaultMap,
         .point = Point{0, 0},
@@ -89,7 +89,7 @@ std::vector<NeighborsTest> NormalTestValues{
     },
 };
 
-std::vector<NeighborsTest> UndefinedTestValues{
+std::vector<NeighborsTest> UndefinedNeighborsTestValues{
     NeighborsTest{
         .map = SingleMap,
         .point = Point{-1, 0},
@@ -113,9 +113,9 @@ std::vector<NeighborsTest> UndefinedTestValues{
 };
 
 INSTANTIATE_TEST_SUITE_P(NormalNeighbors, PointNeighborsTest,
-                         ::testing::ValuesIn(NormalTestValues));
+                         ::testing::ValuesIn(NormalNeighborsTestValues));
 
 INSTANTIATE_TEST_SUITE_P(BadNeighbors, PointNeighborsTest,
-                         ::testing::ValuesIn(UndefinedTestValues));
+                         ::testing::ValuesIn(UndefinedNeighborsTestValues));
 
 }  // namespace sprint1

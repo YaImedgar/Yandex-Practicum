@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <three_of_even_or_odd.hpp>
+#include "three_of_even_or_odd.hpp"
 
 namespace sprint1 {
 

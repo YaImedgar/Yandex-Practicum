@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <quadratic_equation.hpp>
+#include "quadratic_equation.hpp"
 
 namespace sprint1 {
 
